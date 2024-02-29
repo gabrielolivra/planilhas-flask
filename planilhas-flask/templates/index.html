@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados da Planilha</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dados da Planilha</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Matricula</th>
+                <th>Aluno</th>
+                <th>Faltas</th>
+                <th>P1</th>
+                <th>P2</th>
+                <th>P3</th>
+                <th>Media</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(tamanho-3) %}
+            <tr>
+    <td>{{ matricula[i] }}</td>
+    <td>{{ aluno[i] }}</td>
+    <td>{{ faltas[i] }}</td>
+    <td>{{ p1[i] }}</td>
+    <td>{{ p2[i] }}</td>
+    <td>{{ p3[i] }}</td>
+    <td>{{ '{:.2f}'.format(((p1[i] | int + p2[i] | int + p3[i] | int) / 3)) }}</td>
+    {% if (p1[i] + p2[i] + p3[i]) / 3 > 70 %}
+        <td style="color:green;">Aprovado</td>
+    {% else %}
+        <td style="color:red">Reprovado</td>
+    {% endif %}
+</tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>
+
